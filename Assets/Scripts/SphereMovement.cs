@@ -43,6 +43,7 @@ public class SphereMovement : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other) {
+        jumpKeyPressed = false;
         remainingJumps = 2;
     }
     
