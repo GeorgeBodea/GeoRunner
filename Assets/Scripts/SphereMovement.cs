@@ -6,6 +6,7 @@ public class SphereMovement : MonoBehaviour
 {
     private Rigidbody rigidBody;
     private float speed = 5.0f;
+    private float jumpHeight = 5.0f;
     private float verticalInput;
     private float horizontalInput;
     private bool jumpKeyPressed;
@@ -36,13 +37,14 @@ public class SphereMovement : MonoBehaviour
 
         if (jumpKeyPressed && remainingJumps > 0)
         {
-            rigidBody.AddForce(Vector3.up * speed, ForceMode.VelocityChange);
+            rigidBody.AddForce(Vector3.up * jumpHeight, ForceMode.VelocityChange);
             jumpKeyPressed = false;
             remainingJumps -= 1;
         }
     }
 
     private void OnCollisionEnter(Collision other) {
+        jumpKeyPressed = false;
         remainingJumps = 2;
     }
     
