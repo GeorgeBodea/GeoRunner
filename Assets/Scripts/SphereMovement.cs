@@ -17,6 +17,10 @@ public class SphereMovement : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
+        
+        // Load the material 
+        string playerMaterialName = PlayerPrefs.GetString(Constants.BallMaterial);
+        GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/" + playerMaterialName);
     }
 
     // Update is called once per frame
