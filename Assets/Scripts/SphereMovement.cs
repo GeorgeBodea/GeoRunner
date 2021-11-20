@@ -19,7 +19,7 @@ public class SphereMovement : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         
         // Load the material 
-        string playerMaterialName = PlayerPrefs.GetString("PlayerMaterial");
+        string playerMaterialName = PlayerPrefs.GetString(Constants.BallMaterial);
         GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/" + playerMaterialName);
     }
 

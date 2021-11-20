@@ -22,7 +22,7 @@ public class ChangeBallColor : MonoBehaviour
                     
                     if (Physics.Raycast(ray, out hit) && hit.transform.gameObject == gameObject)
                     {
-                        PlayerPrefs.SetString("PlayerMaterial", hit.transform.name);
+                        PlayerPrefs.SetString(Constants.BallMaterial, hit.transform.name);
                         print(hit.transform.gameObject);
                     }
                 }
