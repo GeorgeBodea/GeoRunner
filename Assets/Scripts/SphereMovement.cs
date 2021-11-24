@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine;
 using UnityEngine.UI;
 
 
@@ -64,7 +63,7 @@ public class SphereMovement : MonoBehaviour
 
                 score += 1;
 
-                yourScore = "Score: " + score.ToString();
+                yourScore = score.ToString();
                 textScore.text = yourScore;
 
                 //Reset the timer to 0.
