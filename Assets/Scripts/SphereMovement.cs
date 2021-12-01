@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,21 +20,25 @@ public class SphereMovement : MonoBehaviour
     private float timer;
     private bool isMoving;
 
+    private bool canMove = true; //If player is not hitted
+    private bool isStuned;
+    private bool wasStuned; //If player was stunned before get stunned another time
+    private float pushForce;
+    private bool slide = false;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
-
 
         // Load the material 
         string playerMaterialName = PlayerPrefs.GetString(Constants.BallMaterial);
         GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/" + playerMaterialName);
-
         
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -74,21 +77,63 @@ public class SphereMovement : MonoBehaviour
        
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        rigidBody.AddForce(new Vector3(horizontalInput, 0.0f, verticalInput) * speed);
-
-        if (jumpKeyPressed && remainingJumps > 0)
+        if (canMove)
         {
-            rigidBody.AddForce(Vector3.up * jumpHeight, ForceMode.VelocityChange);
-            jumpKeyPressed = false;
-            remainingJumps -= 1;
+            rigidBody.AddForce(speed * rigidBody.mass * new Vector3(horizontalInput, 0.0f, verticalInput));
+
+            if (jumpKeyPressed && remainingJumps > 0)
+            {
+                rigidBody.AddForce(Vector3.up * jumpHeight, ForceMode.VelocityChange);
+                jumpKeyPressed = false;
+                remainingJumps -= 1;
+            }
         }
+        
     }
 
     private void OnCollisionEnter(Collision other) {
         jumpKeyPressed = false;
         remainingJumps = 2;
+    }
+    
+    public void HitPlayer(Vector3 velocityF, float time)
+    {
+        rigidBody.velocity = new Vector3();
+        rigidBody.AddForce(velocityF,ForceMode.VelocityChange);
+
+        pushForce = velocityF.magnitude;
+        StartCoroutine(Decrease(pushForce, time));
+    }
+    private IEnumerator Decrease(float value, float duration)
+    {
+        if (isStuned)
+            wasStuned = true;
+        isStuned = true;
+        canMove = false;
+
+        float delta = value / duration;
+
+        for (float t = 0; t < duration; t += Time.deltaTime)
+        {
+            yield return null;
+            if (!slide) //Reduce the force if the ground isn't slide
+            {
+                pushForce = pushForce - Time.deltaTime * delta;
+                pushForce = pushForce < 0 ? 0 : pushForce;
+            }
+        }
+
+        if (wasStuned)
+        {
+            wasStuned = false;
+        }
+        else
+        {
+            isStuned = false;
+            canMove = true;
+        }
     }
     
 }
