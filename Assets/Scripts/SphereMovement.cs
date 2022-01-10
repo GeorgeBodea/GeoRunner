@@ -26,6 +26,10 @@ public class SphereMovement : MonoBehaviour
     private float pushForce;
     private bool slide = false;
 
+    public AudioSource[] sounds;
+    public AudioSource noise1;
+    public AudioSource noise2;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -34,7 +38,10 @@ public class SphereMovement : MonoBehaviour
         // Load the material 
         string playerMaterialName = PlayerPrefs.GetString(Constants.BallMaterial);
         GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/" + playerMaterialName);
-        
+
+        sounds = GetComponents<AudioSource>();
+        noise1 = sounds[0];
+        noise2 = sounds[1];
     }
 
     // Update is called once per frame
@@ -85,6 +92,7 @@ public class SphereMovement : MonoBehaviour
 
             if (jumpKeyPressed && remainingJumps > 0)
             {
+                noise1.Play();
                 rigidBody.AddForce(Vector3.up * jumpHeight, ForceMode.VelocityChange);
                 jumpKeyPressed = false;
                 remainingJumps -= 1;
@@ -94,6 +102,7 @@ public class SphereMovement : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other) {
+        noise2.Play();
         jumpKeyPressed = false;
         remainingJumps = 2;
     }
@@ -105,10 +114,11 @@ public class SphereMovement : MonoBehaviour
 
         pushForce = velocityF.magnitude;
         StartCoroutine(Decrease(pushForce, time));
+
     }
     private IEnumerator Decrease(float value, float duration)
     {
-        if (isStuned)
+        if (isStuned) 
             wasStuned = true;
         isStuned = true;
         canMove = false;
