@@ -99,6 +99,11 @@ public class SphereMovement : MonoBehaviour
                 remainingJumps -= 1;
             }
         }
+
+        if(rigidBody.position.y < -1f)
+        {
+            FindObjectOfType<GameManager>().EndGame();
+        }
         
     }
 
