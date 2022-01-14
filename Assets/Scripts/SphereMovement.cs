@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +7,7 @@ using UnityEngine.UI;
 public class SphereMovement : MonoBehaviour
 {
     private Rigidbody rigidBody;
-    private float speed = 10.0f;
+    private float speed = 8.5f;
     private float jumpHeight = 5.0f;
     private float verticalInput;
     private float horizontalInput;
@@ -32,6 +33,7 @@ public class SphereMovement : MonoBehaviour
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
+        textScore.text = "0";
 
         // Load the material 
         string playerMaterialName = PlayerPrefs.GetString(Constants.BallMaterial);
@@ -54,6 +56,12 @@ public class SphereMovement : MonoBehaviour
 
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
+
+        if ((int) transform.position.z > score)
+        {
+            score = (int) transform.position.z;
+            textScore.text = score.ToString();
+        }
     }
 
     private void FixedUpdate()
@@ -121,11 +129,4 @@ public class SphereMovement : MonoBehaviour
             canMove = true;
         }
     }
-
-    public void addPoints(int points)
-    {
-        score += points;
-        textScore.text = score.ToString();
-    }
-    
 }
