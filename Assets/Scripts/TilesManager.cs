@@ -48,7 +48,7 @@ public class TilesManager : MonoBehaviour
         return ob;
     }
     
-    public void SpawnTile(GameObject tile)
+    private void SpawnTile(GameObject tile)
     {
         GameObject newGO = Instantiate(tile, transform.forward*zSpawn, transform.rotation);
         activeTiles.Add(newGO);
