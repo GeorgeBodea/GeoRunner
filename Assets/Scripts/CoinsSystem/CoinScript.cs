@@ -23,7 +23,7 @@ public class CoinScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             GH.coins++;
             AudioSource.PlayClipAtPoint(CoinSound, transform.position);

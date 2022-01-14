@@ -12,7 +12,7 @@ public class SphereMovement : MonoBehaviour
     private float verticalInput;
     private float horizontalInput;
     private bool jumpKeyPressed;
-    private int remainingJumps = 2;
+    private int remainingJumps = 1;
     private bool isGrounded;
 
     public Text textScore;
@@ -88,8 +88,11 @@ public class SphereMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) {
         noise2.Play();
-        jumpKeyPressed = false;
-        remainingJumps = 2;
+        if (other.gameObject.CompareTag("Platform"))
+        {
+            jumpKeyPressed = false;
+            remainingJumps = 1;
+        }
     }
     
     public void HitPlayer(Vector3 velocityF, float time)
