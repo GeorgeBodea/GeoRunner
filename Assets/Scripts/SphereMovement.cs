@@ -16,9 +16,7 @@ public class SphereMovement : MonoBehaviour
 
     public Text textScore;
     private int score;
-    private string yourScore;
     private float timer;
-    private bool isMoving;
 
     private bool canMove = true; //If player is not hitted
     private bool isStuned;
@@ -56,33 +54,6 @@ public class SphereMovement : MonoBehaviour
 
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-
-        
-        //check if the ball started moving
-        if((horizontalInput > 0.0f) || (verticalInput > 0.0f))
-        {
-            isMoving = true;
-        }
-
-        if(isMoving)
-        {
-            //increasing score per second
-            timer += Time.deltaTime;
-
-            if (timer > 1f)
-            {
-
-                score += 1;
-
-                yourScore = score.ToString();
-                textScore.text = yourScore;
-
-                //Reset the timer to 0.
-                timer = 0;
-            }
-        }
-
-       
     }
 
     private void FixedUpdate()
@@ -149,6 +120,12 @@ public class SphereMovement : MonoBehaviour
             isStuned = false;
             canMove = true;
         }
+    }
+
+    public void addPoints(int points)
+    {
+        score += points;
+        textScore.text = score.ToString();
     }
     
 }

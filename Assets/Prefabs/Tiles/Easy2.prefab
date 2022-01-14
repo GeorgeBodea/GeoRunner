@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 5200694575643029836}
   m_Layer: 0
   m_Name: Easy2
-  m_TagString: Untagged
+  m_TagString: EasyTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

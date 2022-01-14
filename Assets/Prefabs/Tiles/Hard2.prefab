@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 4999659212149180238}
   m_Layer: 0
   m_Name: Hard2
-  m_TagString: Untagged
+  m_TagString: HardTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
