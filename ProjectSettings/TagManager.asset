@@ -8,6 +8,7 @@ TagManager:
   - EasyTile
   - MediumTile
   - HardTile
+  - Platform
   layers:
   - Default
   - TransparentFX
