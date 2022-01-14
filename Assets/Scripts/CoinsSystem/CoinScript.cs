@@ -21,9 +21,13 @@ public class CoinScript : MonoBehaviour
         transform.Rotate(0, rotateSpeed, 0, Space.World);
     }
 
-    private void OnTriggerEnter(Collider other) {
-        GH.coins++;
-        AudioSource.PlayClipAtPoint(CoinSound, transform.position);
-        Destroy(gameObject);
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            GH.coins++;
+            AudioSource.PlayClipAtPoint(CoinSound, transform.position);
+            Destroy(gameObject);
+        }
     }
 }
