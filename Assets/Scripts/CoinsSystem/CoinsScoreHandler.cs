@@ -17,6 +17,6 @@ public class CoinsScoreHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CoinText.text = "Coins: " + coins;
+        CoinText.text = coins.ToString();
     }
 }
