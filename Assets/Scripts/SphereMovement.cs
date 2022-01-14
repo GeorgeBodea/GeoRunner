@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SphereMovement : MonoBehaviour
 {
     private Rigidbody rigidBody;
-    private float speed = 5.0f;
+    private float speed = 10.0f;
     private float jumpHeight = 5.0f;
     private float verticalInput;
     private float horizontalInput;
