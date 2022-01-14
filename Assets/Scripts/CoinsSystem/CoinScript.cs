@@ -7,6 +7,8 @@ public class CoinScript : MonoBehaviour
     public CoinsScoreHandler GH;
     public AudioClip CoinSound;
 
+    public int rotateSpeed=1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +18,7 @@ public class CoinScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Rotate(0, rotateSpeed, 0, Space.World);
     }
 
     private void OnTriggerEnter(Collider other) {
