@@ -28,7 +28,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.01, y: 0.002, z: 0.01}
-  m_Center: {x: -0.0008, y: 0.004, z: 0}
+  m_Center: {x: 0, y: 0.001, z: 0}
 --- !u!114 &1047077433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43,6 +43,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GH: {fileID: 0}
   CoinSound: {fileID: 8300000, guid: 28cfce8555ad2c14b8fcdb0a9b9de35c, type: 3}
+  rotateSpeed: 1
 --- !u!1001 &1580681542063204634
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52,11 +53,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1708572530373918, guid: 6cf803f17924190419a094e8c931bfef, type: 3}
       propertyPath: m_Name
-      value: SilverCoin Variant
+      value: SilverCoin
       objectReference: {fileID: 0}
     - target: {fileID: 4336748824580364, guid: 6cf803f17924190419a094e8c931bfef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0008
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4336748824580364, guid: 6cf803f17924190419a094e8c931bfef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4336748824580364, guid: 6cf803f17924190419a094e8c931bfef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4597034488407744, guid: 6cf803f17924190419a094e8c931bfef, type: 3}
       propertyPath: m_RootOrder
@@ -76,15 +85,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4597034488407744, guid: 6cf803f17924190419a094e8c931bfef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.92518
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4597034488407744, guid: 6cf803f17924190419a094e8c931bfef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.3181968
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4597034488407744, guid: 6cf803f17924190419a094e8c931bfef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.346776
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4597034488407744, guid: 6cf803f17924190419a094e8c931bfef, type: 3}
       propertyPath: m_LocalRotation.w
@@ -96,11 +105,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4597034488407744, guid: 6cf803f17924190419a094e8c931bfef, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4597034488407744, guid: 6cf803f17924190419a094e8c931bfef, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4597034488407744, guid: 6cf803f17924190419a094e8c931bfef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
