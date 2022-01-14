@@ -73,9 +73,7 @@ public class SphereMovement : MonoBehaviour
             {
 
                 score += 1;
-
-                yourScore = score.ToString();
-                textScore.text = yourScore;
+                textScore.text = "Time: " + score;
 
                 //Reset the timer to 0.
                 timer = 0;
