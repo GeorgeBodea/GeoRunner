@@ -25,6 +25,8 @@ public class SphereMovement : MonoBehaviour
     private float pushForce;
     private bool slide = false;
 
+    private float ball_bought_speed;
+
     public AudioSource[] sounds;
     public AudioSource noise1;
     public AudioSource noise2;
@@ -42,6 +44,11 @@ public class SphereMovement : MonoBehaviour
         sounds = GetComponents<AudioSource>();
         noise1 = sounds[0];   //jump sound
         noise2 = sounds[1];   //collision sound
+
+        if(!PlayerPrefs.HasKey("bought_speed")){
+            PlayerPrefs.SetFloat("bought_speed", 1F);
+        }
+        
 
     }
 
@@ -67,8 +74,14 @@ public class SphereMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if (canMove)
-        {
-            rigidBody.AddForce(speed * rigidBody.mass * new Vector3(horizontalInput, 0.0f, verticalInput));
+        {   
+            if(!PlayerPrefs.HasKey("bought_speed")){
+            PlayerPrefs.SetFloat("bought_speed", 1F);
+            }
+        
+            ball_bought_speed = PlayerPrefs.GetFloat("bought_speed");
+            ball_bought_speed = 1;
+            rigidBody.AddForce(speed * ball_bought_speed * rigidBody.mass * new Vector3(horizontalInput, 0.0f, verticalInput));
 
             if (jumpKeyPressed && remainingJumps > 0)
             {

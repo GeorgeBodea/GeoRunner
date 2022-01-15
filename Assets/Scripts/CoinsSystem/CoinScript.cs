@@ -16,11 +16,6 @@ public class CoinScript : MonoBehaviour
     void Start()
     {
         GH = GameObject.Find("DisplayCoinsScore").GetComponent<CoinsScoreHandler>();
-
-        if(!PlayerPrefs.HasKey("permanent_coins")){
-            PlayerPrefs.SetInt("permanent_coins", 0);
-        }
-
     }
 
     // Update is called once per frame
