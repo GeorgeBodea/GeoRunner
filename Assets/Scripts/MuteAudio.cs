@@ -12,7 +12,7 @@ public class MuteAudio : MonoBehaviour
         }
         else
         {
-            AudioListener.volume = 1;
+            AudioListener.volume = 0.6F;
         }
     }
 }

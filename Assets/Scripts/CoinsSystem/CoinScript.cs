@@ -9,10 +9,18 @@ public class CoinScript : MonoBehaviour
 
     public int rotateSpeed=1;
 
+    private int previous_coins;
+
+
     // Start is called before the first frame update
     void Start()
     {
         GH = GameObject.Find("DisplayCoinsScore").GetComponent<CoinsScoreHandler>();
+
+        if(!PlayerPrefs.HasKey("permanent_coins")){
+            PlayerPrefs.SetInt("permanent_coins", 0);
+        }
+
     }
 
     // Update is called once per frame
@@ -26,7 +34,12 @@ public class CoinScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             GH.coins++;
-            AudioSource.PlayClipAtPoint(CoinSound, transform.position);
+
+            // Get previous number of coins
+            previous_coins = PlayerPrefs.GetInt("permanent_coins");
+            PlayerPrefs.SetInt("permanent_coins", previous_coins+1);
+
+            AudioSource.PlayClipAtPoint(CoinSound, transform.position, 0.3F);
             Destroy(gameObject);
         }
     }
