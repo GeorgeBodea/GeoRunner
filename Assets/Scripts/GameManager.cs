@@ -21,14 +21,16 @@ public class GameManager : MonoBehaviour
         }
 
     }
-
    
-
     void GameOver()
     {
         gameIsOverUI.SetActive(true);
+        int score = FindObjectOfType<SphereMovement>().getScore();
+        if (score > PlayerPrefs.GetInt("highScore"))
+        {
+            PlayerPrefs.SetInt("highScore", score);
+        }
         Time.timeScale = 0f;
     }
-
-
+    
 }
