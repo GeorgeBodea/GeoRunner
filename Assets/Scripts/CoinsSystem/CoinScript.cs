@@ -11,6 +11,7 @@ public class CoinScript : MonoBehaviour
 
     private int previous_coins;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ public class CoinScript : MonoBehaviour
         if(!PlayerPrefs.HasKey("permanent_coins")){
             PlayerPrefs.SetInt("permanent_coins", 0);
         }
+
     }
 
     // Update is called once per frame
@@ -37,7 +39,7 @@ public class CoinScript : MonoBehaviour
             previous_coins = PlayerPrefs.GetInt("permanent_coins");
             PlayerPrefs.SetInt("permanent_coins", previous_coins+1);
 
-            AudioSource.PlayClipAtPoint(CoinSound, transform.position);
+            AudioSource.PlayClipAtPoint(CoinSound, transform.position, 0.3F);
             Destroy(gameObject);
         }
     }
