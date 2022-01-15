@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,18 +9,14 @@ public class SpeedValueHandler : MonoBehaviour
 
     public float current_speed;
 
-    void Start()
+    private void Start()
     {
-        if(!PlayerPrefs.HasKey("bought_speed")){
-            PlayerPrefs.SetFloat("bought_speed", 1F);
-        }
-  
+        if (!PlayerPrefs.HasKey("bought_speed")) PlayerPrefs.SetFloat("bought_speed", 1F);
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
         current_speed = PlayerPrefs.GetFloat("bought_speed");
         CurrentSpeed.text = current_speed.ToString();
     }
