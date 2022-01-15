@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class InformationsButton : MonoBehaviour
 {
-    public static bool InformationsAreOff = false;
+    public static bool InformationsAreOff;
     public GameObject informationsMenuUI;
 
 
@@ -26,5 +23,4 @@ public class InformationsButton : MonoBehaviour
             InformationsAreOff = true;
         }
     }
-
 }
