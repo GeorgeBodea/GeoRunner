@@ -21,7 +21,7 @@ public class TilesManager : MonoBehaviour
         SpawnTile(spawnTilePrefab);
         for(int i=0;i<numberOfTiles;++i)
         {
-            SpawnTile(easyTilesPrefabs[Random.Range(0,easyTilesPrefabs.Length)]);
+            SpawnTile(RandomTile());
         }
     }
 
@@ -30,16 +30,60 @@ public class TilesManager : MonoBehaviour
     {
         if (player.transform.position.z > zSpawn - (numberOfTiles * tileLength))
         {
-            SpawnTile(easyTilesPrefabs[Random.Range(0,easyTilesPrefabs.Length)]);
+            SpawnTile(RandomTile());
             DeleteTile();
         }
     }
 
     public GameObject RandomTile()
     {
-        // Need to be implemented after new score system
-        GameObject ob = new GameObject();
-        return ob;
+        int randomChance = Random.Range(1, 100);
+        if (zSpawn < 200)
+        {
+            // 90 10 0
+            if (randomChance <= 90)
+            {
+                return easyTilesPrefabs[Random.Range(0, easyTilesPrefabs.Length)];
+            }
+            return mediumTilesPrefabs[Random.Range(0, mediumTilesPrefabs.Length)];
+        }
+         if (zSpawn >= 200 && zSpawn <= 400)
+        {
+            // 40 30 30
+            if (randomChance <= 40)
+            {
+                return easyTilesPrefabs[Random.Range(0, easyTilesPrefabs.Length)];
+            }
+            if(randomChance<=70)
+            {
+                return mediumTilesPrefabs[Random.Range(0, mediumTilesPrefabs.Length)];
+            }
+            return hardTilesPrefabs[Random.Range(0, hardTilesPrefabs.Length)];
+        }
+        if (zSpawn > 400 && zSpawn <= 600)
+        {
+            // 10 40 50
+            if (randomChance <= 10)
+            {
+                return easyTilesPrefabs[Random.Range(0, easyTilesPrefabs.Length)];
+            }
+            if(randomChance<=50)
+            {
+                return mediumTilesPrefabs[Random.Range(0, mediumTilesPrefabs.Length)];
+            }
+            return hardTilesPrefabs[Random.Range(0, hardTilesPrefabs.Length)];
+        }
+        if(zSpawn > 600 && zSpawn <= 800)
+        {
+            // 0 20 80
+            if(randomChance<=20)
+            {
+                return mediumTilesPrefabs[Random.Range(0, mediumTilesPrefabs.Length)];
+            }
+            return hardTilesPrefabs[Random.Range(0, hardTilesPrefabs.Length)];
+        }
+        // 0 0 100
+        return hardTilesPrefabs[Random.Range(0, hardTilesPrefabs.Length)];
     }
     
     private void SpawnTile(GameObject tile)
