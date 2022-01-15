@@ -16,7 +16,9 @@ public class SphereMovement : MonoBehaviour
     private bool isGrounded;
 
     public Text textScore;
+    public Text textHighScore;
     private int score;
+    private int highScore;
     private float timer;
 
     private bool canMove = true; //If player is not hitted
@@ -36,6 +38,17 @@ public class SphereMovement : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody>();
         textScore.text = "0";
+        
+        if(!PlayerPrefs.HasKey("highScore")){
+            PlayerPrefs.SetInt("highScore", 0);
+            highScore = 0;
+            textHighScore.text = highScore.ToString();
+        }
+        else
+        {
+            highScore = PlayerPrefs.GetInt("highScore");
+            textHighScore.text = highScore.ToString();
+        }
 
         // Load the material 
         string playerMaterialName = PlayerPrefs.GetString(Constants.BallMaterial);
@@ -144,5 +157,15 @@ public class SphereMovement : MonoBehaviour
             isStuned = false;
             canMove = true;
         }
+    }
+
+    public int getScore()
+    {
+        if (score > highScore)
+        {
+            highScore = score;
+            textScore.text = score.ToString();
+        }
+        return score;
     }
 }
