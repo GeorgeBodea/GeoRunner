@@ -3326,9 +3326,9 @@ MonoBehaviour:
   easyTilesPrefabs:
   - {fileID: 7685646970233357748, guid: 6159c82b032a08046955645cc4eab571, type: 3}
   - {fileID: 5200694575643029835, guid: 528bd6e3c6c86bd4eb9d69e6e4479ab6, type: 3}
-  - {fileID: 9098461128493171730, guid: 21b0575f9a3caf544ac47fd87a32be46, type: 3}
+  - {fileID: 9098461128493171730, guid: be4b98d6b4022424699a3012672f70cc, type: 3}
   mediumTilesPrefabs:
-  - {fileID: 6000291863734698214, guid: be4b98d6b4022424699a3012672f70cc, type: 3}
+  - {fileID: 6000291863734698214, guid: 21b0575f9a3caf544ac47fd87a32be46, type: 3}
   - {fileID: 4268362001039278831, guid: c2abffba2a869074f9203f8508d9ee4b, type: 3}
   hardTilesPrefabs:
   - {fileID: 2509298820370624147, guid: b677089c0c3e35040a8eaf322574d1dc, type: 3}
