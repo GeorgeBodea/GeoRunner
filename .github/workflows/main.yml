@@ -13,8 +13,8 @@ jobs:
       - name: Fail - No license ☠️
         if: ${{ !startsWith(env.UNITY_LICENSE, '<') }}
         run: exit 1
-
- testRunner:
+  
+  testRunner:
    needs: checkLicense
    name: Test all modes 📝
    runs-on: ubuntu-latest
